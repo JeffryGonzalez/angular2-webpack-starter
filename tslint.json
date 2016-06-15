@@ -1,0 +1,11 @@
+{
+  "rules": {
+    "quotemark": [
+      "single"
+    ],
+    "no-trailing-whitespace": true,
+    "whitespace": [
+      "check-separator"
+    ]
+  }
+}
