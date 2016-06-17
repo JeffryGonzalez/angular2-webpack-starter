@@ -13,7 +13,7 @@ export class BooksService {
 
   }
 
-  retrieveBooks(): Observable<Book[]> {
+  retrieveBooks(): Observable<any> {
     const bookSchema = new Schema('books');
     const authorSchema = new Schema('authors');
     const publisherSchema = new Schema('publishers', { idAttribute: 'publisherId' });
@@ -24,8 +24,8 @@ export class BooksService {
     return this.http.get(this.API_PATH)
       .map(res => {
         let books = normalize(res.json()._data, arrayOf(bookSchema));
-        console.log(books.entities);
-        return books.entities.books;
+        console.log(books);
+        return books;
       });
   }
 }

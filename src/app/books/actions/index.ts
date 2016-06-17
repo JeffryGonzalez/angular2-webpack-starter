@@ -1,9 +1,8 @@
 import { BookActions } from "./book";
-
 export {
-  BookActions
+  BookActions,
 };
 
 export default [
-  BookActions
+  BookActions,
 ];

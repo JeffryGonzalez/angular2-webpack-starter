@@ -1,7 +1,10 @@
 <div>
   <h2>Book List</h2>
-  <div *ngFor='let book of books$ ' >
-      <pre>Book {{book | json}}</pre>
+ <div *ngFor='let book of (books | async) ' >
+      <div>
+        <h4>{{book.title}}</h4>
+        <p>By {{book.authorName}} For {{book.price | currency:'USD':true}}</p>
+      </div>
   </div>
-  <pre>Books {{ books$ | async}} </pre>
+
 </div>

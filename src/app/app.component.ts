@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BooksComponent } from './books/books.component';
-import '../../public/css/styles.css';
+import '../../public/bootstrap/css/bootstrap.min.css';
 
 
 @Component({

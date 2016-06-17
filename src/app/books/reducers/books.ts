@@ -3,34 +3,42 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
 
-import { Book } from '../models';
+import { Book, Author } from '../models';
 import { BookActions } from '../actions';
 
+
 export interface BooksState {
-  ids: number[];
-  entities: { [id: number]: Book }
+  books: {
+    ids: number[];
+    entities: { [id: number]: Book }
+  },
+  authors: {
+    entities: { [id: number]: Author }
+  }
+
 }
+
 
 const initialState: BooksState = {
-  ids: [],
-  entities: {}
+  books: {
+    ids: [],
+    entities: {}
+  },
+  authors: {
+    entities: {}
+  }
 }
-
+/**
+ * The initial Reducer for Books
+ */
 export default function (state = initialState, action: Action): BooksState {
   const book: Book = action.payload;
   switch (action.type) {
     case BookActions.RECEIVED_BOOKS:
-      return {
-        entities: Object.assign({}, state.entities, action.payload.entities),
-        ids: action.payload.ids
-      };
+      console.log("REceived Books", action.payload);
+      return action.payload;
     case BookActions.ADD_BOOK:
-      return {
-        ids: [...state.ids, book.id],
-        entities: Object.assign({}, state.entities, {
-          [book.id]: book
-        })
-      }
+
     default:
       return state;
   }
@@ -39,14 +47,18 @@ export default function (state = initialState, action: Action): BooksState {
 
 export function getBookEntities() {
   return (state$: Observable<BooksState>) => state$
-    .select(s => s.entities);
+//    .select(s => s.books.entities);
+    .select(s => s);
 };
 
 export function getBooks() {
   return (state$: Observable<BooksState>) => state$
     .let(getBookEntities())
     .map(res => {
-      let result = Object.keys(res).map(key => res[key]);
+      console.log("RES----", res);
+      let result = Object.keys(res.books.entities).map(key => res.books.entities[key])
+        .map(b => Object.assign({}, b, { authorName: "Jeff Gonzalez"}))
+
       return result;
     });
 }

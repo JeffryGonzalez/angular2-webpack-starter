@@ -9,6 +9,7 @@ import { runEffects } from '@ngrx/effects';
 import effects  from './app/books/effects';
 import reducer from './app/books/reducers';
 import actions from './app/books/actions';
+import { BooksService } from './app/books/services/books.service';
 
 if (process.env.ENV === 'production') {
   enableProdMode();
@@ -18,6 +19,7 @@ bootstrap(AppComponent, [
   provideStore(reducer),
   actions,
   runEffects(effects),
+  BooksService,
   HTTP_PROVIDERS]
 
 );

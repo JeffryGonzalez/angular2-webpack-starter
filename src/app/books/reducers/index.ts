@@ -10,12 +10,14 @@ import { combineReducers } from '@ngrx/store';
 
 import booksReducer, * as fromBooks from './books';
 
+
 export interface AppState {
   books: fromBooks.BooksState;
 }
+//export declare const storeLogger: (opts?: Object) => (reducer: Function) => (state: any, action: any) => any;
 
 export default compose(storeLogger(), combineReducers)({
-  books: booksReducer,
+  books: booksReducer
 });
 
  export function getBooksState() {
