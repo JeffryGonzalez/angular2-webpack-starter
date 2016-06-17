@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "title": "Sample Book",
+  "authors": [
+    {
+      "id": 99,
+      "firstName": "Stephen",
+      "lastName": "King"
+    },
+    {
+      "id": 232,
+      "firstName": "Barbara",
+      "lastName": "Wills"
+    }
+  ]
+}

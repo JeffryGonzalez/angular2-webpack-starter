@@ -6,14 +6,14 @@ import {
   expect
 } from '@angular/core/testing';
 
-import { AppComponent } from './app.component';
+import { SuperDuperComponent } from './superduper.component';
 
 describe('App', () => {
   beforeEachProviders(() => [
-    AppComponent
+    SuperDuperComponent
   ]);
 
-  it ('should work', inject([AppComponent], (app: AppComponent) => {
+  it ('should work   ', inject([SuperDuperComponent], (app: SuperDuperComponent) => {
     // Add real test here
     expect(2).toBe(3);
   }));

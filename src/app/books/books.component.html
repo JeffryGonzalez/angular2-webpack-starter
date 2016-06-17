@@ -1,0 +1,7 @@
+<div>
+  <h2>Book List</h2>
+  <div *ngFor='let book of books$ ' >
+      <pre>Book {{book | json}}</pre>
+  </div>
+  <pre>Books {{ books$ | async}} </pre>
+</div>

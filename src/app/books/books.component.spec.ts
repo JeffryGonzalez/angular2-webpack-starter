@@ -6,14 +6,14 @@ import {
   expect
 } from '@angular/core/testing';
 
-import { AppComponent } from './app.component';
+import { BooksComponent } from './books.component';
 
 describe('App', () => {
   beforeEachProviders(() => [
-    AppComponent
+    BooksComponent
   ]);
 
-  it ('should work', inject([AppComponent], (app: AppComponent) => {
+  it ('should work', inject([BooksComponent], (app: BooksComponent) => {
     // Add real test here
     expect(2).toBe(3);
   }));
