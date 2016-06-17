@@ -3,7 +3,7 @@
  <div *ngFor='let book of (books | async) ' >
       <div>
         <h4>{{book.title}}</h4>
-        <p>By {{book.authorName}} For {{book.price | currency:'USD':true}}</p>
+        <p>By <mark>{{book.authorName}}</mark> For {{book.price | currency:'USD':true}}</p>
       </div>
   </div>
 

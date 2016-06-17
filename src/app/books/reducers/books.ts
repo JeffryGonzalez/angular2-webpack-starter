@@ -45,19 +45,27 @@ export default function (state = initialState, action: Action): BooksState {
 }
 
 
-export function getBookEntities() {
+/**
+ *These are slicers, or selectors. They are like queries.
+ */
+export function getAllEntities() {
   return (state$: Observable<BooksState>) => state$
-//    .select(s => s.books.entities);
     .select(s => s);
 };
 
+/**
+ * Return books for the books list component. It gives us the books, and shows us information about the author.
+ */
 export function getBooks() {
   return (state$: Observable<BooksState>) => state$
-    .let(getBookEntities())
+    .let(getAllEntities())
     .map(res => {
       console.log("RES----", res);
       let result = Object.keys(res.books.entities).map(key => res.books.entities[key])
-        .map(b => Object.assign({}, b, { authorName: "Jeff Gonzalez"}))
+        .map(b => {
+          let { firstName, lastName } = res.authors.entities[b.author];
+          return Object.assign({}, b, { authorName: `${lastName}, ${firstName}` });
+        })
 
       return result;
     });

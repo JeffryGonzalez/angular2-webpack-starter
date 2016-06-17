@@ -14,7 +14,6 @@ import booksReducer, * as fromBooks from './books';
 export interface AppState {
   books: fromBooks.BooksState;
 }
-//export declare const storeLogger: (opts?: Object) => (reducer: Function) => (state: any, action: any) => any;
 
 export default compose(storeLogger(), combineReducers)({
   books: booksReducer
@@ -26,7 +25,7 @@ export default compose(storeLogger(), combineReducers)({
 }
 
  export function getBookEntities() {
-   return compose(fromBooks.getBookEntities(), getBooksState());
+   return compose(fromBooks.getAllEntities(), getBooksState());
  }
  export function getBooks() {
    return compose(fromBooks.getBooks(), getBooksState());
